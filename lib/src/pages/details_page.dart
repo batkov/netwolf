@@ -98,13 +98,13 @@ class DetailsPage extends StatelessWidget {
         children: [
           SectionListItem(
             label: 'Headers',
-            content: _tryParseAsPrettyJson(requestHeaders),
+            content: _tryMakingPretty(requestHeaders),
           ),
           const SizedBox(height: 16),
           if (requestBody != null)
             SectionListItem(
               label: 'Request body',
-              content: _tryParseAsPrettyJson(requestBody) ?? '$requestBody',
+              content: _tryMakingPretty(requestBody) ?? '$requestBody',
             ),
         ],
       ),
@@ -127,23 +127,26 @@ class DetailsPage extends StatelessWidget {
         children: [
           SectionListItem(
             label: 'Headers',
-            content: _tryParseAsPrettyJson(responseHeaders),
+            content: _tryMakingPretty(responseHeaders),
           ),
           const SizedBox(height: 16),
           if (responseBody != null)
             SectionListItem(
               label: 'Response body',
-              content: _tryParseAsPrettyJson(responseBody) ?? '$responseBody',
+              content: _tryMakingPretty(responseBody) ?? '$responseBody',
             ),
         ],
       ),
     );
   }
 
-  String? _tryParseAsPrettyJson(dynamic source) {
+  String? _tryMakingPretty(dynamic source) {
     try {
       return JsonEncoder.withIndent(' ' * 2).convert(source);
     } catch (e) {
+      if (source is String) {
+        return source;
+      }
       return null;
     }
   }
