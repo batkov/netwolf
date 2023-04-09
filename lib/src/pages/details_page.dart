@@ -142,11 +142,13 @@ class DetailsPage extends StatelessWidget {
 
   String? _tryMakingPretty(dynamic source) {
     try {
-      return JsonEncoder.withIndent(' ' * 2).convert(source);
-    } catch (e) {
-      if (source is String) {
+      const xmlHeader = '<?xml version="';
+      if (source is String && source.startsWith(xmlHeader)) {
+        // Return string as is if it starts as xml.
         return source;
       }
+      return JsonEncoder.withIndent(' ' * 2).convert(source);
+    } catch (e) {
       return null;
     }
   }
