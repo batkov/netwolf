@@ -254,7 +254,7 @@ class NetwolfRequestListViewItem extends StatelessWidget {
                         completed ? '$responseCode' : 'Pending',
                         style: Theme.of(context)
                             .textTheme
-                            .caption
+                            .bodySmall
                             ?.copyWith(color: Colors.white),
                       ),
                     ),
@@ -283,14 +283,14 @@ class NetwolfRequestListViewItem extends StatelessWidget {
   }) {
     return Text(
       '${method?.name.toUpperCase()} ${url?.path ?? ''}',
-      style: Theme.of(context).textTheme.bodyText1,
+      style: Theme.of(context).textTheme.bodyLarge,
     );
   }
 
   Widget _buildUrl(BuildContext context, {required Uri? url}) {
     return Text(
       '${url?.scheme}://${url?.host ?? ''}',
-      style: Theme.of(context).textTheme.bodyText2,
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 
@@ -302,11 +302,11 @@ class NetwolfRequestListViewItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(timestamp.toString(), style: Theme.of(context).textTheme.caption),
+        Text(timestamp.toString(), style: Theme.of(context).textTheme.bodySmall),
         if (responseTime != null)
           Text(
             '${responseTime.inMilliseconds} ms',
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
       ],
     );

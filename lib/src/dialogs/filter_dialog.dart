@@ -104,7 +104,7 @@ class _SortingField<T extends Object> extends StatelessWidget {
             label,
             overflow: TextOverflow.ellipsis,
             maxLines: 999,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
         const SizedBox(width: 16),
@@ -119,7 +119,7 @@ class _SortingField<T extends Object> extends StatelessWidget {
                     value: e,
                     child: Text(
                       itemStringBuilder?.call(e) ?? e.toString(),
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 )

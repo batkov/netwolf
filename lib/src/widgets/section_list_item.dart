@@ -23,13 +23,17 @@ class SectionListItem extends StatelessWidget {
                 label,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
             IconButton(
               icon: const Icon(Icons.copy),
               visualDensity: VisualDensity.compact,
-              onPressed: () => Clipboard.setData(ClipboardData(text: content)),
+              onPressed: () {
+                final clipboardText = content;
+                if (clipboardText == null) { return; }
+                Clipboard.setData(ClipboardData(text: clipboardText));
+              },
             ),
           ],
         ),
@@ -45,7 +49,7 @@ class SectionListItem extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: SelectableText(
               content ?? '',
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
         ),

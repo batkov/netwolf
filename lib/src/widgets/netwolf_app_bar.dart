@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-class NetwolfAppBar extends StatelessWidget with PreferredSizeWidget {
+class NetwolfAppBar extends StatelessWidget implements PreferredSizeWidget {
   const NetwolfAppBar({
     super.key,
     required this.title,
